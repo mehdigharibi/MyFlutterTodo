@@ -45,7 +45,9 @@ class TodoItems extends StatelessWidget {
           decoration: BoxDecoration(
               color: tdRed, borderRadius: BorderRadius.circular(5)),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              onTodoDelete(todo.id);
+            },
             icon: Icon(
               Icons.delete,
             ),

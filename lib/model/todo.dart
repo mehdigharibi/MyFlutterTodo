@@ -17,9 +17,9 @@ class Todo {
       Todo(id: '04', todoText: 'Call John', isDone: true),
       Todo(id: '05', todoText: 'Work On Github', isDone: false),
       Todo(id: '06', todoText: 'Response To Tasks', isDone: true),
-      Todo(id: '04', todoText: 'Call John', isDone: true),
-      Todo(id: '05', todoText: 'Work On Github', isDone: false),
-      Todo(id: '06', todoText: 'Response To Tasks', isDone: true),
+      Todo(id: '07', todoText: 'Call John', isDone: true),
+      Todo(id: '08', todoText: 'Work On Github', isDone: false),
+      Todo(id: '09', todoText: 'Response To Tasks', isDone: true),
     ];
   }
 }

@@ -15,6 +15,14 @@ class homeScreen extends StatefulWidget {
 
 class _homeScreenState extends State<homeScreen> {
   final todoLists = Todo.todoList();
+  List<Todo> _foundtodo = [];
+  final _todoController = TextEditingController();
+  @override
+  void initState() {
+    _foundtodo = todoLists;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -42,11 +50,11 @@ class _homeScreenState extends State<homeScreen> {
                                 fontSize: 30, fontWeight: FontWeight.w500),
                           ),
                         ),
-                        for (Todo todo in todoLists)
+                        for (Todo todo in _foundtodo.reversed)
                           TodoItems(
                             todo: todo,
                             onTodoChange: handleTodoChange,
-                            onTodoDelete: () {},
+                            onTodoDelete: deleteTodoItem,
                           )
                       ],
                     ),
@@ -75,6 +83,7 @@ class _homeScreenState extends State<homeScreen> {
                             ),
                           ]),
                       child: TextField(
+                        controller: _todoController,
                         decoration: InputDecoration(
                             hintText: 'Add new Todo Item',
                             border: InputBorder.none),
@@ -87,7 +96,9 @@ class _homeScreenState extends State<homeScreen> {
                               elevation: 10,
                               primary: tdBlue,
                               minimumSize: Size(60, 60)),
-                          onPressed: () {},
+                          onPressed: () {
+                            _addTodoItem(_todoController.text);
+                          },
                           child: Text(
                             '+',
                             style: TextStyle(fontSize: 40),
@@ -105,5 +116,62 @@ class _homeScreenState extends State<homeScreen> {
     setState(() {
       todo.isDone = !todo.isDone!;
     });
+  }
+
+  void deleteTodoItem(String id) {
+    setState(() {
+      todoLists.removeWhere((element) => element.id == id);
+    });
+  }
+
+  void _addTodoItem(String todo) {
+    setState(() {
+      todoLists.add(Todo(
+          id: DateTime.now().microsecondsSinceEpoch.toString(),
+          todoText: todo,
+          isDone: false));
+    });
+    _todoController.clear();
+  }
+
+  void _runfilter(String EnteredKey) {
+    List<Todo> result = [];
+    if (EnteredKey.isEmpty) {
+      result = todoLists;
+    } else {
+      result = todoLists
+          .where((element) => element.todoText!
+              .toLowerCase()
+              .contains(EnteredKey.toLowerCase()))
+          .toList();
+    }
+
+    setState(() {
+      _foundtodo = result;
+    });
+  }
+
+  Widget searchBox() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: TextField(
+        onChanged: (value) => _runfilter(value),
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.all(0),
+          prefixIcon: Icon(
+            Icons.search,
+            color: Colors.black,
+            size: 20,
+          ),
+          prefixIconConstraints: BoxConstraints(maxHeight: 20, minWidth: 25),
+          hintText: 'Search',
+          border: InputBorder.none,
+        ),
+      ),
+    );
   }
 }
