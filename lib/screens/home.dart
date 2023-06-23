@@ -5,7 +5,6 @@ import 'package:mytodo/model/todo.dart';
 import 'package:mytodo/widgets/appBar.dart';
 import 'package:mytodo/widgets/searchBox.dart';
 import 'package:mytodo/widgets/todoItems.dart';
-import 'package:mytodo/widgets/todoLabel.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
