@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mytodo/widgets/todoItems.dart';
 
 Widget todoLabel() {
   return Expanded(
@@ -10,7 +11,12 @@ Widget todoLabel() {
             'All Todos',
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
           ),
-        )
+        ),
+        todoItems(),
+        todoItems(),
+        todoItems(),
+        todoItems(),
+        todoItems(),
       ],
     ),
   );
