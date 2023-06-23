@@ -55,7 +55,10 @@ class _homeScreenState extends State<homeScreen> {
                             todo: todo,
                             onTodoChange: handleTodoChange,
                             onTodoDelete: deleteTodoItem,
-                          )
+                          ),
+                        SizedBox(
+                          height: 60,
+                        )
                       ],
                     ),
                   )
