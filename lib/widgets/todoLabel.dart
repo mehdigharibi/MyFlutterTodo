@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mytodo/model/todo.dart';
 import 'package:mytodo/widgets/todoItems.dart';
 
 Widget todoLabel() {
+  final todoLists = Todo.todoList();
+
   return Expanded(
     child: ListView(
       children: [
@@ -12,11 +15,7 @@ Widget todoLabel() {
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
           ),
         ),
-        todoItems(),
-        todoItems(),
-        todoItems(),
-        todoItems(),
-        todoItems(),
+        for (Todo todo in todoLists) TodoItems(todo: todo)
       ],
     ),
   );
