@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mytodo/constants/colors.dart';
 import 'package:mytodo/widgets/appBar.dart';
+import 'package:mytodo/widgets/searchBox.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
@@ -20,7 +21,14 @@ class _homeScreenState extends State<homeScreen> {
       home: Scaffold(
         backgroundColor: TdBGcolor,
         appBar: buildAppbar(),
-        body: Container(),
+        body: Container(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            children: [
+              searchBox(),
+            ],
+          ),
+        ),
       ),
     );
   }
