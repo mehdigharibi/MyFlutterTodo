@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:mytodo/constants/colors.dart';
 import 'package:mytodo/widgets/appBar.dart';
 import 'package:mytodo/widgets/searchBox.dart';
+import 'package:mytodo/widgets/todoLabel.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
@@ -22,10 +23,11 @@ class _homeScreenState extends State<homeScreen> {
         backgroundColor: TdBGcolor,
         appBar: buildAppbar(),
         body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           child: Column(
             children: [
               searchBox(),
+              todoLabel(),
             ],
           ),
         ),

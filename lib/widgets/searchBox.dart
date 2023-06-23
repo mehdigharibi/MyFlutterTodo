@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Container searchBox() {
+Widget searchBox() {
   return Container(
     padding: EdgeInsets.symmetric(horizontal: 20),
     decoration: BoxDecoration(
