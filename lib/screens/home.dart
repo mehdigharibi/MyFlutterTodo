@@ -15,6 +15,7 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
+  final todoLists = Todo.todoList();
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -31,7 +32,26 @@ class _homeScreenState extends State<homeScreen> {
               child: Column(
                 children: [
                   searchBox(),
-                  todoLabel(),
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(top: 50, bottom: 20),
+                          child: Text(
+                            'All Todos',
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        for (Todo todo in todoLists)
+                          TodoItems(
+                            todo: todo,
+                            onTodoChange: handleTodoChange,
+                            onTodoDelete: () {},
+                          )
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -80,5 +100,11 @@ class _homeScreenState extends State<homeScreen> {
         ),
       ),
     );
+  }
+
+  void handleTodoChange(Todo todo) {
+    setState(() {
+      todo.isDone = !todo.isDone!;
+    });
   }
 }
