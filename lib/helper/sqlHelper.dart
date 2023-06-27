@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:sqflite/sqflite.dart' as sql;
 
 class SQLHelper {
@@ -19,5 +21,36 @@ class SQLHelper {
         onCreate: (sql.Database database, int version) async {
       await createTable(database);
     });
+  }
+
+  //Create Todo Function
+  static Future<int> createItem(String TodoText, Bool isDone) async {
+    final db = await SQLHelper.db();
+
+    final data = {'todotext': TodoText, 'isdone': isDone};
+
+    final id = await db.insert('items', data,
+        conflictAlgorithm: sql.ConflictAlgorithm.replace);
+    return id;
+  }
+
+  static Future<List<Map<String, dynamic>>> getItems() async {
+    final db = await SQLHelper.db();
+    return db.query('items', orderBy: "id");
+  }
+
+  static Future<List<Map<String, dynamic>>> getItem(int id) async {
+    final db = await SQLHelper.db();
+    return db.query('items', where: "id=?", whereArgs: [id], limit: 1);
+  }
+
+  static Future<void> deleteItem(int id) async {
+    final db = await SQLHelper.db();
+
+    try {
+      db.delete('items', where: "id=?", whereArgs: [id]);
+    } catch (e) {
+      print(e);
+    }
   }
 }
