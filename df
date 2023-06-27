@@ -1,0 +1,89 @@
+[33mcommit 4f8931d3005a2fbe87bb69a95b2ebfdb464bf679[m[33m ([m[1;36mHEAD -> [m[1;32msqflite[m[33m)[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Tue Jun 27 23:12:59 2023 +0330
+
+    final Commit on Sqflite Branch
+
+[33mcommit 876bf73f6de0898dfac0fa74de26ab48e6ac4555[m[33m ([m[1;31morigin/sqflite[m[33m)[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Tue Jun 27 20:50:28 2023 +0330
+
+    Add some Functions to SqlHelper
+
+[33mcommit 9913208b08557bcdc02ce664fd40222b935f22bb[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Sat Jun 24 20:33:35 2023 +0330
+
+    add Sql Helper
+
+[33mcommit f7d0edbc92f69690fa3a450fe636de71aa4e7bf1[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 23:34:09 2023 +0330
+
+    build commit
+
+[33mcommit 2208fa3f52d5154b6e65290f246387bc81a1f26e[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 23:30:15 2023 +0330
+
+    final commit
+
+[33mcommit eba50439eba4df6db2400d88e6dde65f4011e95c[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 23:04:28 2023 +0330
+
+    Change Dotolist Items in main2
+
+[33mcommit e194edab67f3f522ee19c59f7659674c66cf6dcc[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 23:03:54 2023 +0330
+
+    Change Dotolist Items in main
+
+[33mcommit b999c724593d927d5e9a574c7866f642ab528450[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 22:54:55 2023 +0330
+
+    add NewTodo Add Textfield with button
+
+[33mcommit e061afbaa757dc2fe2b5306a6b8de9448f7c55ea[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 22:21:12 2023 +0330
+
+    add Fix TodoList Tile
+
+[33mcommit c78f206b60743671361f9727137b68e85608f77c[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 22:02:01 2023 +0330
+
+    add Todolabel Widget
+
+[33mcommit cece056123b071cb92e91d904336f3abbc96d7e5[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 21:55:51 2023 +0330
+
+    Add SearchBox Widget
+
+[33mcommit 65f3ef702b347f0a4afcdb1048365db17ff95be9[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 21:47:32 2023 +0330
+
+    Extract AppBar To widget
+
+[33mcommit 016b0f8c1f72e7d76446a795e8ba246e0f5d77bc[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 21:23:20 2023 +0330
+
+    add Colors to Constants
+
+[33mcommit ed43fc7917cc9aff7ccf60438278a3f60955d7f4[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 21:15:07 2023 +0330
+
+    Create Structure
+
+[33mcommit 8fec3c264d39bd5ee3831fb0cf500c08aeee0573[m
+Author: mehdi gharibi <mgharibiwork@gmail.com>
+Date:   Fri Jun 23 21:07:43 2023 +0330
+
+    first commit
