@@ -174,7 +174,7 @@ class _homeScreenState extends State<homeScreen> {
       temp.add(Todo(
           id: element['id'].toString(),
           todoText: element['todotext'].toString(),
-          isDone: element['isdone'] == '0' ? true : false));
+          isDone: element['isdone'].toString() == '1' ? true : false));
     });
 
     if (EnteredKey.isEmpty) {
