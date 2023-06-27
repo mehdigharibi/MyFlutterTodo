@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mytodo/constants/colors.dart';
+import 'package:mytodo/helper/sqlHelper.dart';
 import 'package:mytodo/model/todo.dart';
 import 'package:mytodo/widgets/appBar.dart';
 import 'package:mytodo/widgets/searchBox.dart';
@@ -14,12 +15,33 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
+  List<Map<String, dynamic>> items = [];
+  bool isLoading = true;
   final todoLists = Todo.todoList();
   List<Todo> _foundtodo = [];
   final _todoController = TextEditingController();
+
+  void refreshItems() async {
+    final data = await SQLHelper.getItems().then((value) {
+      setState(() {
+        print(value);
+        _foundtodo.clear();
+        items = value;
+        items.forEach((element) {
+          _foundtodo.add(Todo(
+              id: element['id'].toString(),
+              todoText: element['todotext'].toString(),
+              isDone: element['isdone'].toString() == '1' ? true : false));
+        });
+        isLoading = false;
+      });
+    });
+  }
+
   @override
   void initState() {
-    _foundtodo = todoLists;
+    refreshItems();
+
     super.initState();
   }
 
@@ -115,34 +137,50 @@ class _homeScreenState extends State<homeScreen> {
     );
   }
 
-  void handleTodoChange(Todo todo) {
+  Future handleTodoChange(Todo todo) async {
     setState(() {
       todo.isDone = !todo.isDone!;
     });
-  }
 
-  void deleteTodoItem(String id) {
-    setState(() {
-      todoLists.removeWhere((element) => element.id == id);
+    await SQLHelper.updateItem(todo).then((value) {
+      refreshItems();
     });
   }
 
-  void _addTodoItem(String todo) {
+  Future deleteTodoItem(String id) async {
+    await SQLHelper.deleteItem(int.parse(id));
+
     setState(() {
-      todoLists.add(Todo(
-          id: DateTime.now().microsecondsSinceEpoch.toString(),
-          todoText: todo,
-          isDone: false));
+      refreshItems();
     });
-    _todoController.clear();
+  }
+
+  Future<void> _addTodoItem(String todo) async {
+    Todo mytodo = Todo(
+        id: DateTime.now().microsecondsSinceEpoch.toString(),
+        todoText: todo,
+        isDone: false);
+    //   todoLists.add( Todo(  id: DateTime.now().microsecondsSinceEpoch.toString(), todoText: todo, isDone: false)
+    await SQLHelper.createItem(mytodo).then((value) => _todoController.clear());
+    setState(() {
+      refreshItems();
+    });
   }
 
   void _runfilter(String EnteredKey) {
     List<Todo> result = [];
+    List<Todo> temp = [];
+    items.forEach((element) {
+      temp.add(Todo(
+          id: element['id'].toString(),
+          todoText: element['todotext'].toString(),
+          isDone: element['isdone'] == '0' ? true : false));
+    });
+
     if (EnteredKey.isEmpty) {
-      result = todoLists;
+      result = temp;
     } else {
-      result = todoLists
+      result = temp
           .where((element) => element.todoText!
               .toLowerCase()
               .contains(EnteredKey.toLowerCase()))
